@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="by.vfedorenko.githubmanager.presentation.login.activities.LoginActivity">
-        <by.vfedorenko.githubmanager.presentation.login.views.LoginWebView
+        <by.vfedorenko.githubmanager.presentation.login.views.OAuthWebView
             android:id="@+id/web_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
