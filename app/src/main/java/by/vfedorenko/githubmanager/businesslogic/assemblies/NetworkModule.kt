@@ -1,5 +1,7 @@
 package by.vfedorenko.githubmanager.businesslogic.assemblies
 
+import by.vfedorenko.githubmanager.businesslogic.network.AuthInterceptor
+import by.vfedorenko.githubmanager.businesslogic.utils.AuthUserManager
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -29,7 +31,16 @@ class NetworkModule {
                     .addCallAdapterFactory(adapterFactory)
                     .build()
 
+    @Singleton
+    @Provides
+    fun provideClient(interceptor: AuthInterceptor) =
+            OkHttpClient.Builder()
+                    .addInterceptor(interceptor)
+                    .build()
 
+    @Singleton
+    @Provides
+    fun provideAuthInterceptor(authManager: AuthUserManager) = AuthInterceptor(authManager)
 
     @Singleton
     @Provides

@@ -6,13 +6,13 @@ import android.util.AttributeSet
 import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import rx.Observable
-import rx.Subscriber
+import rx.Single
+import rx.SingleSubscriber
 
 /**
  * @author Vlad Fedorenko <vfedo92@gmail.com> on 25.01.17.
  */
-class LoginWebView(context: Context, attrs: AttributeSet): WebView(context, attrs) {
+class OAuthWebView(context: Context, attrs: AttributeSet): WebView(context, attrs) {
     companion object {
         const val AUTH_URL = "github.com/login/oauth/authorize"
         const val CLIENT_ID = "e1358db690c64012ea7f"
@@ -26,7 +26,7 @@ class LoginWebView(context: Context, attrs: AttributeSet): WebView(context, attr
         setWebViewClient(LoginWebViewClient())
     }
 
-    var subscriber: Subscriber<in String>? = null
+    var subscriber: SingleSubscriber<in String>? = null
 
     inner class LoginWebViewClient() : WebViewClient() {
         override
@@ -39,8 +39,7 @@ class LoginWebView(context: Context, attrs: AttributeSet): WebView(context, attr
                 Log.d("111", "code " + uri.getQueryParameter("code"))
 
                 if (subscriber != null && !subscriber!!.isUnsubscribed) {
-                    subscriber?.onNext(uri.getQueryParameter("code"))
-                    subscriber?.onCompleted()
+                    subscriber?.onSuccess(uri.getQueryParameter("code"))
                 }
                 return true
             }
@@ -48,15 +47,15 @@ class LoginWebView(context: Context, attrs: AttributeSet): WebView(context, attr
         }
     }
 
-    fun beginLogin(): Observable<String> {
-        var authUri = Uri.Builder().scheme("https")
+    fun beginLogin(): Single<String> {
+        val authUri = Uri.Builder().scheme("https")
                 .encodedAuthority(AUTH_URL)
                 .appendQueryParameter("client_id", CLIENT_ID)
                 //.appendQueryParameter("redirect_uri", CALLBACK_URL)
                 .appendQueryParameter("scope", SCOPE)
                 .build()
 
-        return Observable.create {
+        return Single.create {
             subscriber = it
             loadUrl(authUri.toString())
         }
