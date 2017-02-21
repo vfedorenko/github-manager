@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="by.vfedorenko.githubmanager.presentation.repositories.viewmodels.ReposViewModel"/>
+            type="by.vfedorenko.githubmanager.presentation.repositories.ReposViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout

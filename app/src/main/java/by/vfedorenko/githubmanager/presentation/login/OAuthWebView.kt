@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.presentation.login.views
+package by.vfedorenko.githubmanager.presentation.login
 
 import android.content.Context
 import android.net.Uri

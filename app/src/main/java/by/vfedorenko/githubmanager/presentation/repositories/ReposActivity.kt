@@ -9,8 +9,8 @@ import by.vfedorenko.githubmanager.R
 import by.vfedorenko.githubmanager.businesslogic.utils.AuthUserManager
 import by.vfedorenko.githubmanager.databinding.ActivityReposBinding
 import by.vfedorenko.githubmanager.presentation.App
-import by.vfedorenko.githubmanager.presentation.login.activities.LoginActivity
-import by.vfedorenko.githubmanager.presentation.repositories.viewmodels.ReposViewModel
+import by.vfedorenko.githubmanager.presentation.login.LoginActivity
+import by.vfedorenko.githubmanager.presentation.repositories.ReposViewModel
 import javax.inject.Inject
 
 class ReposActivity : AppCompatActivity() {

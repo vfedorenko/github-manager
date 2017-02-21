@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.presentation.repositories.viewmodels
+package by.vfedorenko.githubmanager.presentation.repositories
 
 import javax.inject.Inject
 

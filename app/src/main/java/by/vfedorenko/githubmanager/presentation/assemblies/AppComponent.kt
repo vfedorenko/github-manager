@@ -4,8 +4,8 @@ import by.vfedorenko.githubmanager.businesslogic.assemblies.ApiModule
 import by.vfedorenko.githubmanager.businesslogic.assemblies.InteractorsModule
 import by.vfedorenko.githubmanager.businesslogic.assemblies.NetworkModule
 import by.vfedorenko.githubmanager.businesslogic.assemblies.UtilsModule
-import by.vfedorenko.githubmanager.presentation.login.assemblies.LoginComponent
-import by.vfedorenko.githubmanager.presentation.repositories.assemblies.ReposComponent
+import by.vfedorenko.githubmanager.presentation.login.LoginComponent
+import by.vfedorenko.githubmanager.presentation.repositories.ReposComponent
 import dagger.Component
 import javax.inject.Singleton
 

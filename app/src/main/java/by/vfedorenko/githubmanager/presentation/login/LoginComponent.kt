@@ -1,7 +1,7 @@
-package by.vfedorenko.githubmanager.presentation.login.assemblies
+package by.vfedorenko.githubmanager.presentation.login
 
 import by.vfedorenko.githubmanager.presentation.assemblies.ActivityModule
-import by.vfedorenko.githubmanager.presentation.login.activities.LoginActivity
+import by.vfedorenko.githubmanager.presentation.login.LoginActivity
 import dagger.Subcomponent
 
 /**

@@ -6,7 +6,7 @@ import by.vfedorenko.githubmanager.presentation.assemblies.ActivityModule
 import by.vfedorenko.githubmanager.presentation.assemblies.AppComponent
 import by.vfedorenko.githubmanager.presentation.assemblies.AppModule
 import by.vfedorenko.githubmanager.presentation.assemblies.DaggerAppComponent
-import by.vfedorenko.githubmanager.presentation.login.activities.LoginActivity
+import by.vfedorenko.githubmanager.presentation.login.LoginActivity
 import by.vfedorenko.githubmanager.presentation.repositories.ReposActivity
 
 /**

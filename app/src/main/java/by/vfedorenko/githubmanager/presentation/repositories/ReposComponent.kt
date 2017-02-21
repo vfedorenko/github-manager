@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.presentation.repositories.assemblies
+package by.vfedorenko.githubmanager.presentation.repositories
 
 import by.vfedorenko.githubmanager.presentation.repositories.ReposActivity
 import dagger.Subcomponent
