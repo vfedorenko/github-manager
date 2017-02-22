@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.businesslogic.assemblies
+package by.vfedorenko.githubmanager.businesslogic.di
 
 import by.vfedorenko.githubmanager.businesslogic.network.LoginApi
 import dagger.Module

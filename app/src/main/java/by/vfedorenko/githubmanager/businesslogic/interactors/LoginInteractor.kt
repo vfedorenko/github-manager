@@ -8,10 +8,12 @@ import rx.Single
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by Vlad Fedorenko <vfedo92@gmail.com> on 26.01.17.
  */
+@Singleton
 class LoginInteractor
 @Inject constructor(val loginApi: LoginApi, val authUserManager: AuthUserManager) {
     fun login(code: String): Single<Boolean> {

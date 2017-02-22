@@ -3,10 +3,12 @@ package by.vfedorenko.githubmanager.businesslogic.utils
 import android.content.SharedPreferences
 import by.vfedorenko.githubmanager.presentation.App
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by Vlad Fedorenko <vfedo92@gmail.com> on 26.01.17.
  */
+@Singleton
 class AuthUserManager
 @Inject constructor(val prefs: SharedPreferences) {
     companion object {

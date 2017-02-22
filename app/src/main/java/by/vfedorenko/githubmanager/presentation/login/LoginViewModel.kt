@@ -1,24 +1,23 @@
 package by.vfedorenko.githubmanager.presentation.login
 
-import android.util.Log
 import by.vfedorenko.githubmanager.businesslogic.interactors.LoginInteractor
-import by.vfedorenko.githubmanager.businesslogic.utils.NavigationManager
-import by.vfedorenko.githubmanager.presentation.repositories.ReposActivity
+import by.vfedorenko.githubmanager.presentation.di.scopes.LoginScope
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * @author Vlad Fedorenko <vfedo92@gmail.com> on 22.01.17.
  */
-class LoginViewModel @Inject constructor(val loginInteractor: LoginInteractor, val navigationManager: NavigationManager) {
+@LoginScope
+class LoginViewModel @Inject constructor(val loginInteractor: LoginInteractor) {
     fun init(oAuthWebView: OAuthWebView) {
         oAuthWebView.beginLogin()
                 .flatMap { loginInteractor.login(it) }
                 .subscribe(
                         {
-                            navigationManager.startActivity(ReposActivity.createIntent(navigationManager.activity))
-                            navigationManager.finishActivity()
+//                            navigationManager.startActivityAndFinish(ReposActivity.createIntent(navigationManager.activity))
                         },
-                        { Log.e("111", "error", it) }
+                        { Timber.e(it) }
                 )
     }
 }

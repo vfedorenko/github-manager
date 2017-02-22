@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.presentation.assemblies
+package by.vfedorenko.githubmanager.presentation.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @Module
 class AppModule(private val context: Context) {
     companion object {
-        val PREFS_KEY = "prefs_storage_file"
+        private const val PREFS_KEY = "prefs_storage_file"
     }
 
     @Singleton

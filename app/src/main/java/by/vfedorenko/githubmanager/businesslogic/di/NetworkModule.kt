@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.businesslogic.assemblies
+package by.vfedorenko.githubmanager.businesslogic.di
 
 import by.vfedorenko.githubmanager.businesslogic.network.AuthInterceptor
 import by.vfedorenko.githubmanager.businesslogic.utils.AuthUserManager

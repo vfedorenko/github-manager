@@ -9,4 +9,8 @@ import android.support.v7.app.AppCompatActivity
 class NavigationManager(val activity: AppCompatActivity) {
     fun finishActivity() = activity.finish()
     fun startActivity(intent: Intent) = activity.startActivity(intent)
+    fun startActivityAndFinish(intent: Intent) {
+        activity.startActivity(intent)
+        activity.finish()
+    }
 }
