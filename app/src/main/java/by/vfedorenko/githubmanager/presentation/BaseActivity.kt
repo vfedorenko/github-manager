@@ -26,4 +26,13 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         else -> onOptionsItemSelected(item)
     }
+
+    override fun onStop() {
+        if (!isChangingConfigurations) {
+            clearScope()
+        }
+        super.onStop()
+    }
+
+    abstract fun clearScope()
 }

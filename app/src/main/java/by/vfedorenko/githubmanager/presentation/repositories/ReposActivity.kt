@@ -24,15 +24,17 @@ class ReposActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App).injectMe(this)
+        (application as App).componentsManager.injectMe(this)
 
         val binding = DataBindingUtil.setContentView<ActivityReposBinding>(this, R.layout.activity_repos)
         binding.viewModel = viewModel
 
         setupToolbar(binding.toolbar, showHomeAsBack = true)
 
-        binding.fab.setOnClickListener { startActivity(RepoDetailsActivity.createIntent(this)) }
-
         Timber.tag("111").e("master viewModel = $viewModel")
+    }
+
+    override fun clearScope() {
+        (application as App).componentsManager.clearReposScope()
     }
 }
