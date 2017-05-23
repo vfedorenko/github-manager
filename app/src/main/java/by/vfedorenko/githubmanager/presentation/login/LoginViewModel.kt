@@ -1,23 +1,26 @@
 package by.vfedorenko.githubmanager.presentation.login
 
+import by.vfedorenko.githubmanager.businesslogic.di.scopes.ActivityScope
 import by.vfedorenko.githubmanager.businesslogic.interactors.LoginInteractor
-import by.vfedorenko.githubmanager.businesslogic.utils.NavigationManager
-import by.vfedorenko.githubmanager.presentation.di.scopes.LoginScope
-import by.vfedorenko.githubmanager.presentation.repositories.ReposActivity
+import by.vfedorenko.githubmanager.presentation.Activities
+import ru.terrakok.cicerone.Router
 import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * @author Vlad Fedorenko <vfedo92@gmail.com> on 22.01.17.
  */
-@LoginScope
-class LoginViewModel @Inject constructor(private val loginInteractor: LoginInteractor,
-                                         private val navigationManager: NavigationManager) {
+@ActivityScope
+class LoginViewModel
+@Inject
+constructor(private val loginInteractor: LoginInteractor,
+            private val router: Router) {
+
     fun init(oAuthWebView: OAuthWebView) {
         oAuthWebView.beginLogin()
                 .flatMap { loginInteractor.login(it) }
                 .subscribe(
-                        { navigationManager.startActivityAndFinish(ReposActivity.createIntent(navigationManager.activity)) },
+                        { router.replaceScreen(Activities.ACTIVITY_REPOS) },
                         { Timber.e(it) }
                 )
     }

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 apply plugin: 'com.ofg.uptodate'
 
@@ -28,19 +29,16 @@ android {
     }
 }
 
-kapt {
-    generateStubs = true
-}
-
 dependencies {
-    ext.support_version = '25.1.1'
+    ext.support_version = '25.3.1'
     ext.retrofit_version = '2.1.0'
     ext.okhttp_version = '3.5.0'
     ext.gson_version = '2.8.0'
-    ext.dagger_version = '2.8'
+    ext.dagger_version = '2.11-rc2'
     ext.rxandoid_version = '1.2.1'
     ext.glide_version = '3.7.0'
     ext.timber_version = '4.5.1'
+    ext.cicerone_version = '1.2.1'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -63,19 +61,25 @@ dependencies {
     compile "com.google.code.gson:gson:$gson_version"
 
     // dagger 2
-    compile "com.google.dagger:dagger:$dagger_version"
+    provided "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    provided 'org.glassfish:javax.annotation:10.0-b28'
+    // dagger.android
+    compile "com.google.dagger:dagger-android:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     //Rx dependencies
     compile "io.reactivex:rxandroid:$rxandoid_version"
     compile 'io.reactivex:rxkotlin:0.60.0'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.1@aar'
 
+    //Cicerone
+    compile "ru.terrakok.cicerone:cicerone:$cicerone_version"
+
     compile "com.github.bumptech.glide:glide:$glide_version"
 
     compile "com.jakewharton.timber:timber:$timber_version"
 }
+
 repositories {
     mavenCentral()
 }

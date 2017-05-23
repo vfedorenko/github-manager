@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.presentation.di
+package by.vfedorenko.githubmanager.businesslogic.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -17,9 +17,9 @@ class AppModule(private val context: Context) {
 
     @Singleton
     @Provides
-    fun provideContext() = context
+    fun provideApplication() = context
 
     @Singleton
     @Provides
-    fun provideSharedPreferences(context: Context): SharedPreferences = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
+    fun provideSharedPreferences(): SharedPreferences = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE)
 }

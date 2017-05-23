@@ -15,7 +15,9 @@ import javax.inject.Singleton
  */
 @Singleton
 class LoginInteractor
-@Inject constructor(val loginApi: LoginApi, val authUserManager: AuthUserManager) {
+@Inject
+constructor(val loginApi: LoginApi, val authUserManager: AuthUserManager) {
+
     fun login(code: String): Single<Boolean> {
         return loginApi.getToken(AuthBody(code))
                 .subscribeOn(Schedulers.io())

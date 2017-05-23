@@ -28,7 +28,7 @@ class OAuthWebView(context: Context, attrs: AttributeSet): WebView(context, attr
 
     var subscriber: SingleSubscriber<in String>? = null
 
-    inner class LoginWebViewClient() : WebViewClient() {
+    inner class LoginWebViewClient : WebViewClient() {
         override
         fun shouldOverrideUrlLoading(view: WebView, urlString: String): Boolean {
             Log.d("111", "Redirecting URL " + urlString)
