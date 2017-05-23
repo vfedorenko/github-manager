@@ -1,5 +1,6 @@
 package by.vfedorenko.githubmanager.businesslogic.di
 
+import by.vfedorenko.githubmanager.businesslogic.di.modules.*
 import by.vfedorenko.githubmanager.presentation.App
 import dagger.Component
 import dagger.android.AndroidInjectionModule
