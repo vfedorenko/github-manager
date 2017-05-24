@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import by.vfedorenko.githubmanager.R
 import by.vfedorenko.githubmanager.databinding.ActivityLoginBinding
-import by.vfedorenko.githubmanager.presentation.Activities
 import by.vfedorenko.githubmanager.presentation.ActivityNavigator
 import by.vfedorenko.githubmanager.presentation.BaseActivity
 import dagger.android.AndroidInjection
@@ -22,8 +21,6 @@ class LoginActivity : BaseActivity() {
         binding.viewModel = viewModel
 
         viewModel.init(binding.webView)
-
-        Activities.ACTIVITY_LOGIN
     }
 
     override fun getNavigator() = ActivityNavigator(this)

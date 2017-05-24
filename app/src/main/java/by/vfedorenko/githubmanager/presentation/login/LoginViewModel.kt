@@ -2,7 +2,7 @@ package by.vfedorenko.githubmanager.presentation.login
 
 import by.vfedorenko.githubmanager.businesslogic.di.scopes.ActivityScope
 import by.vfedorenko.githubmanager.businesslogic.interactors.LoginInteractor
-import by.vfedorenko.githubmanager.presentation.Activities
+import by.vfedorenko.githubmanager.presentation.ACTIVITY_REPOS
 import ru.terrakok.cicerone.Router
 import timber.log.Timber
 import javax.inject.Inject
@@ -20,7 +20,7 @@ constructor(private val loginInteractor: LoginInteractor,
         oAuthWebView.beginLogin()
                 .flatMap { loginInteractor.login(it) }
                 .subscribe(
-                        { router.replaceScreen(Activities.ACTIVITY_REPOS) },
+                        { router.replaceScreen(ACTIVITY_REPOS) },
                         { Timber.e(it) }
                 )
     }

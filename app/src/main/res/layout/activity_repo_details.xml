@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="by.vfedorenko.githubmanager.presentation.repositories.RepoDetailsViewModel"/>
+            type="by.vfedorenko.githubmanager.presentation.repositories.viewmodels.RepoDetailsViewModel"/>
     </data>
 
     <LinearLayout
@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin"
-        tools:context="by.vfedorenko.githubmanager.presentation.repositories.RepoDetailsActivity">
+        tools:context="by.vfedorenko.githubmanager.presentation.repositories.activities.RepoDetailsActivity">
 
         <EditText
             android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package by.vfedorenko.githubmanager.businesslogic.di.modules
 
+import by.vfedorenko.githubmanager.businesslogic.di.annotations.Api
+import by.vfedorenko.githubmanager.businesslogic.di.annotations.Auth
 import by.vfedorenko.githubmanager.businesslogic.network.AuthInterceptor
 import by.vfedorenko.githubmanager.businesslogic.utils.AuthUserManager
 import dagger.Module
@@ -15,42 +17,63 @@ import javax.inject.Singleton
 /**
  * @author Vlad Fedorenko <vfedo92@gmail.com> on 22.01.17.
  */
-@dagger.Module
+@Module
 class NetworkModule {
 
-    @javax.inject.Singleton
-    @dagger.Provides
-    fun provideRetrofit(endpoint: String,
-                        client: okhttp3.OkHttpClient,
-                        converterFactory: retrofit2.Converter.Factory,
-                        adapterFactory: retrofit2.CallAdapter.Factory) =
-            retrofit2.Retrofit.Builder()
+    @Singleton
+    @Provides
+    @Auth
+    fun provideAuthRetrofit(@Auth endpoint: String,
+                        client: OkHttpClient,
+                        converterFactory: Converter.Factory,
+                        adapterFactory: CallAdapter.Factory) =
+            Retrofit.Builder()
                     .baseUrl(endpoint)
                     .client(client)
                     .addConverterFactory(converterFactory)
                     .addCallAdapterFactory(adapterFactory)
                     .build()
 
-    @javax.inject.Singleton
-    @dagger.Provides
-    fun provideClient(interceptor: by.vfedorenko.githubmanager.businesslogic.network.AuthInterceptor) =
-            okhttp3.OkHttpClient.Builder()
+    @Singleton
+    @Provides
+    @Api
+    fun provideApiRetrofit(@Api endpoint: String,
+                        client: OkHttpClient,
+                        converterFactory: Converter.Factory,
+                        adapterFactory: CallAdapter.Factory) =
+            Retrofit.Builder()
+                    .baseUrl(endpoint)
+                    .client(client)
+                    .addConverterFactory(converterFactory)
+                    .addCallAdapterFactory(adapterFactory)
+                    .build()
+
+    @Singleton
+    @Provides
+    fun provideClient(interceptor: AuthInterceptor) =
+            OkHttpClient.Builder()
                     .addInterceptor(interceptor)
                     .build()
 
-    @javax.inject.Singleton
-    @dagger.Provides
-    fun provideAuthInterceptor(authManager: by.vfedorenko.githubmanager.businesslogic.utils.AuthUserManager) = by.vfedorenko.githubmanager.businesslogic.network.AuthInterceptor(authManager)
+    @Singleton
+    @Provides
+    fun provideAuthInterceptor(authManager: AuthUserManager) = AuthInterceptor(authManager)
 
-    @javax.inject.Singleton
-    @dagger.Provides
-    fun provideConverterFactory(): retrofit2.Converter.Factory = retrofit2.converter.gson.GsonConverterFactory.create()
+    @Singleton
+    @Provides
+    fun provideConverterFactory(): Converter.Factory = GsonConverterFactory.create()
 
-    @javax.inject.Singleton
-    @dagger.Provides
-    fun provideCallAdapterFactory(): retrofit2.CallAdapter.Factory = retrofit2.adapter.rxjava.RxJavaCallAdapterFactory.create()
+    @Singleton
+    @Provides
+    fun provideCallAdapterFactory(): CallAdapter.Factory = RxJavaCallAdapterFactory.create()
 
-    @javax.inject.Singleton
-    @dagger.Provides
-    fun provideApiEndpointUrl() = "https://github.com/"
+    @Singleton
+    @Provides
+    @Auth
+    fun provideAuthUrl() = "https://github.com/"
+
+    @Singleton
+    @Provides
+    @Api
+    fun provideApiUrl() = "https://api.github.com/"
 }

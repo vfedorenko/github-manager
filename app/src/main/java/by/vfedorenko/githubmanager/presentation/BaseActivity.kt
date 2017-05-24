@@ -15,9 +15,6 @@ import javax.inject.Inject
  * @author Vlad Fedorenko <vfedo92@gmail.com> on 21.02.17.
  */
 abstract class BaseActivity : AppCompatActivity() {
-    companion object {
-        fun createBundle() = Bundle()
-    }
 
     @Inject
     lateinit var navigationHolder: NavigatorHolder

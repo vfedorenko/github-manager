@@ -1,12 +1,7 @@
 package by.vfedorenko.githubmanager.businesslogic.di.modules
 
-import by.vfedorenko.githubmanager.businesslogic.di.scopes.ActivityScope
-import by.vfedorenko.githubmanager.presentation.BaseActivity
-import by.vfedorenko.githubmanager.presentation.login.LoginActivity
-import by.vfedorenko.githubmanager.presentation.repositories.RepoDetailsActivity
-import by.vfedorenko.githubmanager.presentation.repositories.ReposActivity
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import by.vfedorenko.githubmanager.presentation.repositories.activities.RepoDetailsActivity
+import by.vfedorenko.githubmanager.presentation.repositories.activities.ReposActivity
 
 /**
  * @author Vlad Fedorenko <vfedo92@gmail.com> on 19.05.17.
@@ -23,9 +18,9 @@ abstract class ActivityModule {
 
     @by.vfedorenko.githubmanager.businesslogic.di.scopes.ActivityScope
     @dagger.android.ContributesAndroidInjector
-    abstract fun contributeReposActivityInjector(): by.vfedorenko.githubmanager.presentation.repositories.ReposActivity
+    abstract fun contributeReposActivityInjector(): ReposActivity
 
     @by.vfedorenko.githubmanager.businesslogic.di.scopes.ActivityScope
     @dagger.android.ContributesAndroidInjector
-    abstract fun contributeRepoDetailsActivityInjector(): by.vfedorenko.githubmanager.presentation.repositories.RepoDetailsActivity
+    abstract fun contributeRepoDetailsActivityInjector(): RepoDetailsActivity
 }

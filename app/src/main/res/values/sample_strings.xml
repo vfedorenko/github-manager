@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sample_owner_name">Owner Name</string>
+    <string name="sample_name">Name</string>
+    <string name="sample_description">Description</string>
+</resources>

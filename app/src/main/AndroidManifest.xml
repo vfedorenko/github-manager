@@ -10,14 +10,14 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".presentation.login.LoginActivity" />
-        <activity android:name=".presentation.repositories.ReposActivity">
+        <activity android:name=".presentation.repositories.activities.ReposActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.repositories.RepoDetailsActivity"></activity>
+        <activity android:name=".presentation.repositories.activities.RepoDetailsActivity"></activity>
     </application>
 
 </manifest>
