@@ -1,7 +1,6 @@
 package by.vfedorenko.githubmanager.presentation
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import by.vfedorenko.githubmanager.presentation.login.LoginActivity
 import by.vfedorenko.githubmanager.presentation.repositories.activities.RepoDetailsActivity
@@ -19,20 +18,18 @@ import java.lang.UnsupportedOperationException
 class ActivityNavigator(private val activity: Activity) : Navigator {
     override fun applyCommand(command: Command) = when (command) {
         is Replace -> {
-            activity.startActivity(createIntent(command.screenKey, command.transitionData as? Bundle ?: Bundle()))
+            startActivity(command.screenKey, command.transitionData as? Bundle ?: Bundle())
             activity.finish()
         }
-        is Forward -> activity.startActivity(createIntent(command.screenKey, command.transitionData as? Bundle ?: Bundle()))
+        is Forward -> startActivity(command.screenKey, command.transitionData as? Bundle ?: Bundle())
         is Back -> activity.finish()
         else -> throw UnsupportedOperationException("$command is not supported")
     }
 
-    private fun createIntent(screenKey: String, extras: Bundle) = when (screenKey) {
-        ACTIVITY_LOGIN -> buildIntent(LoginActivity::class.java, extras)
-        ACTIVITY_REPOS -> buildIntent(ReposActivity::class.java, extras)
-        ACTIVITY_REPO_DETAILS -> buildIntent(RepoDetailsActivity::class.java, extras)
+    private fun startActivity(screenKey: String, extras: Bundle) = when (screenKey) {
+        ACTIVITY_LOGIN -> activity.startActivity<LoginActivity>(extras)
+        ACTIVITY_REPOS -> activity.startActivity<ReposActivity>(extras)
+        ACTIVITY_REPO_DETAILS -> activity.startActivity<RepoDetailsActivity>(extras)
         else -> throw UnsupportedOperationException("$screenKey is not supported")
     }
-
-    private fun <T> buildIntent(className: Class<T>, extras: Bundle) = Intent(activity, className).putExtras(extras)
 }
