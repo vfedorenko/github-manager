@@ -1,4 +1,4 @@
-package by.vfedorenko.githubmanager.presentation
+package by.vfedorenko.githubmanager
 
 import android.app.Activity
 import android.content.Intent

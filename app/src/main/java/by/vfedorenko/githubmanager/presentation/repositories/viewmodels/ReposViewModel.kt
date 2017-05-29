@@ -15,20 +15,18 @@ import javax.inject.Inject
 @ActivityScope
 class ReposViewModel
 @Inject
-constructor(authUserManager: AuthUserManager,
+constructor(val adapter: ReposAdapter,
             private val router: Router,
-            reposInteractor: ReposInteractor,
-            val adapter: ReposAdapter) {
+            authUserManager: AuthUserManager,
+            reposInteractor: ReposInteractor) {
 
     init {
         if (authUserManager.getToken().isEmpty()) {
             router.replaceScreen(ACTIVITY_LOGIN)
         } else {
-            reposInteractor.getRepos()
+            reposInteractor.getRepos(withSync = true)
                     .subscribe(
-                            {
-                                adapter.refreshItems(it)
-                            },
+                            { adapter.refreshItems(it) },
                             {
                                 Timber.e(it)
                                 router.showSystemMessage("Failed to load repos: ${it.message}")

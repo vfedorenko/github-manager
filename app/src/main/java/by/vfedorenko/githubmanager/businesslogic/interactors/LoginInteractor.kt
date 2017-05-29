@@ -4,6 +4,7 @@ import by.vfedorenko.githubmanager.businesslogic.network.HttpException
 import by.vfedorenko.githubmanager.businesslogic.network.LoginApi
 import by.vfedorenko.githubmanager.businesslogic.utils.AuthUserManager
 import by.vfedorenko.githubmanager.entities.network.AuthBody
+import by.vfedorenko.githubmanager.presentation.App
 import rx.Single
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -24,10 +25,10 @@ constructor(val loginApi: LoginApi, val authUserManager: AuthUserManager) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { response ->
                     if (response.isSuccessful) {
-                        authUserManager.saveToken(response.body().token)
+                        authUserManager.saveToken(response.body()?.token ?: App.EMPTY_STRING)
                         true
                     } else {
-                        throw HttpException(response.errorBody().string(), response.code())
+                        throw HttpException(response.errorBody()?.string(), response.code())
                     }
                 }
     }

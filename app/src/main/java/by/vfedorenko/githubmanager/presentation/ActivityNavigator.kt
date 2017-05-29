@@ -2,14 +2,13 @@ package by.vfedorenko.githubmanager.presentation
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.Toast
 import by.vfedorenko.githubmanager.presentation.login.LoginActivity
 import by.vfedorenko.githubmanager.presentation.repositories.activities.RepoDetailsActivity
 import by.vfedorenko.githubmanager.presentation.repositories.activities.ReposActivity
+import by.vfedorenko.githubmanager.startActivity
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.commands.Back
-import ru.terrakok.cicerone.commands.Command
-import ru.terrakok.cicerone.commands.Forward
-import ru.terrakok.cicerone.commands.Replace
+import ru.terrakok.cicerone.commands.*
 import java.lang.UnsupportedOperationException
 
 /**
@@ -23,6 +22,7 @@ class ActivityNavigator(private val activity: Activity) : Navigator {
         }
         is Forward -> startActivity(command.screenKey, command.transitionData as? Bundle ?: Bundle())
         is Back -> activity.finish()
+        is SystemMessage -> Toast.makeText(activity, command.message, Toast.LENGTH_LONG).show()
         else -> throw UnsupportedOperationException("$command is not supported")
     }
 

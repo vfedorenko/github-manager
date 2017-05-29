@@ -34,6 +34,8 @@ class RepoDetailsActivity : BaseActivity() {
 
         val repoId = intent.getLongExtra(EXTRA_REPO_ID, App.ZERO)
         viewModel.init(repoId)
+
+        setupToolbar(binding.toolbar, clearDefaultTitle = true, showHomeAsBack = true)
     }
 
     override fun getNavigator() = ActivityNavigator(this)

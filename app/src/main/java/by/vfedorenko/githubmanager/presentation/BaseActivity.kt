@@ -5,7 +5,6 @@ import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import by.vfedorenko.githubmanager.R
 import dagger.android.AndroidInjection
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -24,18 +23,18 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState, persistentState)
     }
 
-    protected fun setupToolbar(toolbar: Toolbar?, title: String = App.EMPTY_STRING, showHomeAsBack: Boolean = false) {
+    protected fun setupToolbar(toolbar: Toolbar?, clearDefaultTitle: Boolean = false, showHomeAsBack: Boolean = false) {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(showHomeAsBack)
 
-        if (title.isNotEmpty()) {
-            supportActionBar?.title = title
+        if (clearDefaultTitle) {
+            supportActionBar?.title = App.EMPTY_STRING
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.home -> {
+        android.R.id.home -> {
             finish()
             true
         }

@@ -2,10 +2,12 @@ package by.vfedorenko.githubmanager.presentation
 
 import android.app.Activity
 import android.app.Application
-import by.vfedorenko.githubmanager.businesslogic.di.modules.AppModule
 import by.vfedorenko.githubmanager.businesslogic.di.DaggerAppComponent
+import by.vfedorenko.githubmanager.businesslogic.di.modules.AppModule
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import io.realm.Realm
+import io.realm.RealmConfiguration
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 import javax.inject.Inject
@@ -30,6 +32,10 @@ class App : Application(), HasActivityInjector {
                 .build()
                 .inject(this)
 
+        Realm.init(this)
+        Realm.setDefaultConfiguration(RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build())
         Timber.plant(DebugTree())
     }
 

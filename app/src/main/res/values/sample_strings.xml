@@ -3,4 +3,5 @@
     <string name="sample_owner_name">Owner Name</string>
     <string name="sample_name">Name</string>
     <string name="sample_description">Description</string>
+    <string name="sample_language">Language</string>
 </resources>
