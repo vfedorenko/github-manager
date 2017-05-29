@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         xmlns:binding="http://schemas.android.com/tools">
 
     <data>
@@ -27,47 +28,47 @@
                 android:id="@+id/avatar"
                 android:layout_width="@dimen/small_avatar"
                 android:layout_height="@dimen/small_avatar"
-                app:srcCompat="@mipmap/ic_launcher"
                 binding:imageUrl="@{viewModel.avatarUrl}"
                 card_view:layout_constraintLeft_toLeftOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent"/>
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher"/>
 
             <TextView
                 android:id="@+id/ownerName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sample_owner_name"
                 android:text="@{viewModel.ownerName}"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/small_text"
                 android:layout_marginStart="@dimen/small_margin"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintRight_toRightOf="parent"
-                card_view:layout_constraintLeft_toRightOf="@id/avatar"/>
+                card_view:layout_constraintLeft_toRightOf="@id/avatar"
+                tools:text="anonymous"/>
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sample_name"
                 android:text="@{viewModel.name}"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 card_view:layout_constraintTop_toBottomOf="@id/ownerName"
                 card_view:layout_constraintLeft_toLeftOf="@id/ownerName"
-                card_view:layout_constraintRight_toRightOf="@id/ownerName"/>
+                card_view:layout_constraintRight_toRightOf="@id/ownerName"
+                tools:text="my-new-super-awesome-repo"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sample_description"
                 android:text="@{viewModel.description}"
                 card_view:layout_constraintLeft_toLeftOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/avatar"
                 card_view:layout_constraintRight_toRightOf="@id/name"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                binding:isVisible="@{viewModel.hasDescription}"/>
+                binding:isVisible="@{viewModel.hasDescription}"
+                tools:text="Some description"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>

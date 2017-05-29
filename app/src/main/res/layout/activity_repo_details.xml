@@ -46,60 +46,63 @@
                 android:id="@+id/watchers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/watchers"
                 android:text="@{@string/watchers(viewModel.watchersCount)}"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Watchers: 6"
+                style="@style/main_text"/>
 
             <TextView
                 android:id="@+id/stars"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/small_margin"
-                android:hint="@string/stars"
                 android:text="@{@string/stars(viewModel.starsCount)}"
                 app:layout_constraintLeft_toRightOf="@id/watchers"
-                app:layout_constraintTop_toTopOf="@id/watchers"/>
+                app:layout_constraintTop_toTopOf="@id/watchers"
+                tools:text="Stars: 999"
+                style="@style/main_text"/>
 
             <TextView
                 android:id="@+id/forks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/small_margin"
-                android:hint="@string/forks"
                 android:text="@{@string/forks(viewModel.forksCount)}"
                 app:layout_constraintLeft_toRightOf="@id/stars"
-                app:layout_constraintTop_toTopOf="@id/watchers"/>
+                app:layout_constraintTop_toTopOf="@id/watchers"
+                tools:text="Forks: 42"
+                style="@style/main_text"/>
 
             <TextView
                 android:id="@+id/language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/sample_language"
                 android:text="@{viewModel.language}"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:text="@string/browse_code"
-                android:onClick="@{viewModel::onBrowseCodeClick}"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/watchers"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Kotlin"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/sample_description"
                 android:text="@{viewModel.description}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button"/>
+                app:layout_constraintTop_toBottomOf="@+id/watchers"
+                tools:text="Some long description here"
+                android:layout_marginTop="0dp"/>
         </android.support.constraint.ConstraintLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="@{viewModel::onBrowseCodeClick}"
+            app:srcCompat="@android:drawable/ic_input_add"/>
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>

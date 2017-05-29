@@ -18,7 +18,7 @@ class ReposInteractor
     fun getRepos(withSync: Boolean): Observable<List<Repo>> {
         return synchRepos()
 //        return Observable.concat(reposRepository.getRepos(), synchRepos())
-        //.first { !withSync }
+//                .first { !withSync }
     }
 
     fun getRepo(id: Long) = reposRepository.getRepo(id)

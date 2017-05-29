@@ -74,7 +74,6 @@ dependencies {
     compile "io.reactivex:rxandroid:$rxandoid_version"
     compile "io.reactivex:rxkotlin:$rxkotlin_version"
 
-    //Cicerone
     compile "ru.terrakok.cicerone:cicerone:$cicerone_version"
 
     compile "com.github.bumptech.glide:glide:$glide_version"
